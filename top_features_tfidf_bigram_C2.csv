@@ -1,0 +1,51 @@
+feature,weight,class_direction
+great,9.82767538703482,positive
+excellent,7.995857197752731,positive
+perfect,6.61010544061769,positive
+wonderful,5.8961296217202674,positive
+amazing,5.810427420728943,positive
+brilliant,5.143356211247186,positive
+best,5.113000902222871,positive
+today,5.001610903013223,positive
+fun,4.922636316320151,positive
+loved,4.830537110590435,positive
+hilarious,4.593219911769757,positive
+the best,4.579039166960932,positive
+superb,4.430378335708615,positive
+enjoyable,4.375189327770314,positive
+enjoyed,4.240293683690274,positive
+love,4.162314928314546,positive
+especially,4.096817505301606,positive
+favorite,4.093870552574861,positive
+must see,4.089318434173267,positive
+highly,3.8430458375561423,positive
+strong,3.814568730262293,positive
+this is,3.8057503125491414,positive
+dvd,3.7907019377137496,positive
+fantastic,3.7543552766124164,positive
+definitely,3.7415356036002994,positive
+worst,-10.426793947214591,negative
+bad,-9.90187719083556,negative
+awful,-9.37891285271992,negative
+boring,-8.465299345247308,negative
+the worst,-7.890101518100155,negative
+poor,-7.805362294902874,negative
+terrible,-7.264204711347339,negative
+waste,-7.249393588390559,negative
+nothing,-6.157886243057201,negative
+worse,-5.832691761017455,negative
+horrible,-5.7979412830925465,negative
+poorly,-5.495601467013442,negative
+stupid,-5.489602956822227,negative
+dull,-5.476871133906004,negative
+annoying,-5.1482856146609635,negative
+lame,-4.997711694300128,negative
+disappointment,-4.938304044118792,negative
+no,-4.847694326553085,negative
+disappointing,-4.836857956688227,negative
+fails,-4.777531661344854,negative
+instead,-4.56889424717729,negative
+unfortunately,-4.551430214020094,negative
+ridiculous,-4.546922579598871,negative
+even,-4.477832681091615,negative
+oh,-4.450227358052966,negative

@@ -1,0 +1,18 @@
+[
+  {
+    "model": "bow_unigram_C1",
+    "accuracy": 0.8870626197438741,
+    "f1_positive": 0.8877755511022044,
+    "confusion_matrix_path": "outputs\\confusion_matrix_bow_unigram_C1.png",
+    "top_features_path": "outputs\\top_features_bow_unigram_C1.csv",
+    "notes": "Binary sentiment classification on IMDB reviews."
+  },
+  {
+    "model": "tfidf_bigram_C2",
+    "accuracy": 0.9078350307552687,
+    "f1_positive": 0.9093253968253968,
+    "confusion_matrix_path": "outputs\\confusion_matrix_tfidf_bigram_C2.png",
+    "top_features_path": "outputs\\top_features_tfidf_bigram_C2.csv",
+    "notes": "Binary sentiment classification on IMDB reviews."
+  }
+]
