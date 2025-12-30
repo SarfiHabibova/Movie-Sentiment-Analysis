@@ -12,10 +12,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, ConfusionMatrixDisplay, classification_report
 
 
-# =========================
-# CONFIG (no CLI)
-# =========================
-DATA_PATH = os.path.join("data", "raw", "IMDB Dataset.csv")  # Kaggle file name usually exactly this
+DATA_PATH = os.path.join("data", "raw", "IMDB Dataset.csv") 
 OUTPUT_DIR = "outputs"
 RANDOM_SEED = 42
 TEST_SIZE = 0.2
@@ -35,7 +32,7 @@ def clean_text(text: str) -> str:
     text = re.sub(r"<br\s*/?>", " ", text)
     text = re.sub(r"<.*?>", " ", text)
     text = re.sub(r"http\S+|www\.\S+", " ", text)
-    text = re.sub(r"[^a-z0-9\s']", " ", text)  # keep apostrophes for contractions
+    text = re.sub(r"[^a-z0-9\s']", " ", text)  
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -47,7 +44,7 @@ def load_data(path: str) -> pd.DataFrame:
             f"Put the Kaggle CSV here: data/raw/IMDB Dataset.csv"
         )
     df = pd.read_csv(path)
-    # Expected columns: 'review', 'sentiment'
+ 
     expected = {"review", "sentiment"}
     if not expected.issubset(set(df.columns)):
         raise ValueError(f"Expected columns {expected}, got: {df.columns.tolist()}")
@@ -95,16 +92,16 @@ def evaluate_model(name: str, pipe: Pipeline, X_train, X_test, y_train, y_test) 
     acc = accuracy_score(y_test, preds)
     f1 = f1_score(y_test, preds, pos_label="positive")
 
-    # Save confusion matrix image (for report screenshots)
+ 
     cm_path = os.path.join(OUTPUT_DIR, f"confusion_matrix_{name}.png")
     save_confusion_matrix(y_test, preds, cm_path, f"Confusion Matrix - {name}")
 
-    # Save top features
+   
     feats = top_features_from_logreg(pipe, top_n=25)
     feats_path = os.path.join(OUTPUT_DIR, f"top_features_{name}.csv")
     feats.to_csv(feats_path, index=False)
 
-    # Print a short report to console
+  
     print("\n" + "=" * 70)
     print(f"MODEL: {name}")
     print(f"Accuracy: {acc:.4f}")
@@ -125,11 +122,9 @@ def evaluate_model(name: str, pipe: Pipeline, X_train, X_test, y_train, y_test) 
 def main():
     df = load_data(DATA_PATH)
 
-    # Basic cleaning + duplicates
     df = df.drop_duplicates()
     df["review"] = df["review"].apply(clean_text)
 
-    # Train/test split (strict rule: never train on test) 
     X_train, X_test, y_train, y_test = train_test_split(
         df["review"],
         df["sentiment"],
@@ -138,12 +133,6 @@ def main():
         stratify=df["sentiment"]
     )
 
-    # -----------------------------
-    # EXPERIMENTS (medium-level)
-    # 1) BoW unigram + C=1.0
-    # 2) TF-IDF bigram + C=2.0
-    # (This satisfies "try at least 2 different parameter settings")
-    # -----------------------------
     experiments = {
         "bow_unigram_C1": Pipeline([
             ("vectorizer", CountVectorizer(max_features=30000, ngram_range=(1, 1))),
@@ -160,12 +149,12 @@ def main():
         res = evaluate_model(name, pipe, X_train, X_test, y_train, y_test)
         results.append(res)
 
-    # Save results JSON (for GitHub + report)
+  
     out_json = os.path.join(OUTPUT_DIR, "results.json")
     with open(out_json, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
 
-    # Choose best model by F1
+   
     best = max(results, key=lambda x: x["f1_positive"])
     print("\n" + "=" * 70)
     print("BEST MODEL (by F1):", best["model"])
