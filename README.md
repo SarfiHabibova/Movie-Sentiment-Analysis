@@ -28,8 +28,8 @@ Each record contains a full movie review and its corresponding sentiment label.
 ---
 
 ## 3. Project Structure
+
 AI-MOVIE-PROJECT/
-│
 ├── data/
 │ └── raw/
 │ └── IMDB Dataset.csv
@@ -44,6 +44,8 @@ AI-MOVIE-PROJECT/
 ├── main.py
 ├── README.md
 └── requirements.txt
+
+
 
 ---
 
@@ -112,4 +114,5 @@ Both models successfully learned sentiment patterns from movie reviews.
 - **C1 (Bag of Words Unigram)** performed well as a simpler baseline model.
 
 This comparison demonstrates the importance of feature representation in text classification tasks.
+
 
